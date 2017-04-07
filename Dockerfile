@@ -16,8 +16,17 @@ RUN apt-get install -y \
     && rm pintos.tar.gz \
     && env SRCDIR=/ PINTOSDIR=/pintos/ DSTDIR=/usr/local/ \
         sh /pintos/src/misc/bochs-2.2.6-build.sh \
-    && rm bochs-2.2.6.tar.gz
+    && rm bochs-2.2.6.tar.gz \
+    && wget http://download.qemu-project.org/qemu-0.14.1.tar.gz \
+    && tar xzf qemu-0.14.1.tar.gz \
+    && cd qemu-0.14.1 \
+    && ./configure --target-list=i386-softmmu \
+    && make install \
+    && cd .. \
+    && rm -rf qemu-0.14.1*
 
 WORKDIR /pintos
 
 VOLUME [/pintos]
+
+ENV PATH $PATH:/pintos/src/utils
