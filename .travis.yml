@@ -1,0 +1,15 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+install:
+  - git clone https://github.com/hangpark/pintos-dev-env-kaist.git
+
+script:
+  - docker build -t hangpark/pintos-dev-env-kaist .
+
+after_script:
+  - docker images

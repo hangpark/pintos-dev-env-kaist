@@ -1,0 +1,17 @@
+sudo: required
+
+branches:
+  only:
+    - master
+    - develop
+
+language: bash
+
+services:
+  - docker
+
+before_install:
+  - docker pull hangpark/pintos-dev-env-kaist
+
+script:
+  - docker run -v $TRAVIS_BUILD_DIR:/pintos hangpark/pintos-dev-env-kaist /bin/bash -c "cd /pintos/src/$TARGET_DIRECTORY && make grade" > /dev/null && cat src/$TARGET_DIRECTORY/build/grade
