@@ -55,6 +55,8 @@ $ sudo docker run -t -d -v <your-pintos-dir>:/pintos --name <container-name> han
 **Note:** Make sure that `src` is not `<your-pintos-dir>`, but the directory
 contains `src` directory directly is.
 
+**Note:** Make sure that `<your-pintos-dir>` to be an absolute path.
+
 ## Run
 
 To run Pintos, use following command:
